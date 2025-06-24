@@ -49,11 +49,9 @@ if uploaded_file is not None:
             st.error(f"File CSV kamu kekurangan kolom: {missing_cols}")
         else:
             predictions = model.predict(df_for_model[required_features])
-            probs = model.predict_proba(df_for_model[required_features])[:, 1]
 
             df['Gender'] = gender_asli
             df['Prediksi'] = ["Diabetes" if p == 1 else "Tidak diabetes" for p in predictions]
-            df['Probabilitas Risiko (%)'] = [round(prob * 100, 2) for prob in probs]
 
             st.success("Hasil Prediksi:")
             st.dataframe(df)

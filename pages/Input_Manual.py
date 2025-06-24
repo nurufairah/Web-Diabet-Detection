@@ -3,7 +3,6 @@ import pandas as pd
 import joblib
 
 model = joblib.load("model/rfc_diabet_model.pkl")
-model_accuracy = 0.9748
 
 st.title("Input Manual Data Pasien")
 
@@ -39,13 +38,9 @@ if submitted:
     }])
 
     prediction = model.predict(input_data)[0]
-    prediction_proba = model.predict_proba(input_data)[0][1]
 
     st.subheader("Hasil Prediksi:")
     if prediction == 1:
         st.error("Model memprediksi pasien diabetes.")
     else:
         st.success("Model memprediksi pasien tidak diabetes.")
-
-    st.metric(label="Probabilitas Risiko", value=f"{prediction_proba*100:.2f}%")
-    st.info(f"Akurasi model: {model_accuracy*100:.2f}%")
