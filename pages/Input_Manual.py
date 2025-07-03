@@ -19,7 +19,7 @@ with st.form("input_form"):
     vldl = st.number_input("Rasio VLDL", min_value=0.0, step=0.01)
     bmi = st.number_input("Rasio BMI", min_value=0.0, step=0.01)
 
-    submitted = st.form_submit_button("Prediksi")
+    submitted = st.form_submit_button("Deteksi")
 
 if submitted:
     gender_encoded = 1 if gender == "Male" else 0
@@ -39,8 +39,8 @@ if submitted:
 
     prediction = model.predict(input_data)[0]
 
-    st.subheader("Hasil Prediksi:")
+    st.subheader("Hasil:")
     if prediction == 1:
-        st.error("Model memprediksi pasien diabetes.")
+        st.error("Model mendeteksi pasien diabetes.")
     else:
-        st.success("Model memprediksi pasien tidak diabetes.")
+        st.success("Model mendeteksi pasien tidak diabetes.")

@@ -51,9 +51,9 @@ if uploaded_file is not None:
             predictions = model.predict(df_for_model[required_features])
 
             df['Gender'] = gender_asli
-            df['Prediksi'] = ["Diabetes" if p == 1 else "Tidak diabetes" for p in predictions]
+            df['Deteksi'] = ["Diabetes" if p == 1 else "Tidak diabetes" for p in predictions]
 
-            st.success("Hasil Prediksi:")
+            st.success("Hasil:")
             st.dataframe(df)
 
     except Exception as e:
